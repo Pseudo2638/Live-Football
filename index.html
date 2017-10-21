@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!-- Angular app declaration in ng-app attribute -->
+<html ng-app="footballScorecard">
+  <head>
+    <meta charset="utf-8">
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+
+    <!-- Font Awesome Plugin/Library for icons and fonts to make the website look more leegant -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Combined stylesheet of all html files(including views folder's html files) -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- Stylesheet to make the webiste responsive using media queries -->
+    <!-- This can be noticed when the browser is resized -->
+    <link rel="stylesheet" href="css/mediaQuery.css">
+
+    <title> Live Football </title>
+  </head>
+
+  <body>
+
+  <header>
+    <!-- NAVBAR START -->
+    <!-- Different classes of navbar for different properties like: -->
+    <!-- 'navbar-default' for the color of the navbar,-->
+    <!-- 'navbar-fixed-top' for fixing the postion of nav to the top which remains at top while scrolling -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+        <div class="container-fluid navbar-border">
+
+
+            <div class="navbar-header" style="width: 20% !important;">
+
+                 <!-- Brand and toggle get grouped for better mobile display -->
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
+                 <!-- 'Navbar Brand' on the left of navbar-->
+                   <img class="navbar-brand" src="images/logo.png"  alt="logo" style="margin-top:0.2% !important;">
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav">
+                   <li style="font-size: 15px !important;">
+                     <a href="#/"><i class="fa fa-building"></i>
+                       &nbsp Recent Scores
+                     </a>
+                   </li>
+                   <li style="font-size: 15px !important;">
+                     <a href="#/stats">
+                       <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                       &nbsp Statistics
+                     </a>
+                   </li>
+                   <li style="font-size: 15px !important;"class="filterNavButton" >
+                     <a href="#/filter">
+                       <i class="fa fa-filter" aria-hidden="true"></i>
+                       &nbsp Filters
+                     </a>
+                   </li>
+                </ul>
+
+                <!-- Social icons on the right of navbar -->
+                <!-- Note: Here, Fonts Awesome's icon has been used-->
+                <ul class="nav navbar-nav navbar-right">
+                   <li>
+                     <a href="#">
+                       <i class="fa fa-twitter color-twitter"></i>
+                     </a>
+                   </li>
+                   <li>
+                     <a href="#">
+                       <i class="fa fa-instagram color-instagram"></i>
+                     </a>
+                   </li>
+                   <li>
+                     <a href="#">
+                       <i class="fa fa-facebook color-facebook"></i>
+                     </a>
+                   </li>
+                   <li>
+                     <a href="#">
+                       <i class="fa fa-linkedin color-linkedin"></i>
+                     </a>
+                   </li>
+                </ul>
+
+
+             </div>
+             <!-- ''.navbar-collapse' END -->
+         </div>
+         <!-- ''.container-fluid' END -->
+      </nav>
+      <!-- NAVBAR END -->
+  </header>
+
+
+  <div class="midView" ng-view >
+      <!-- This is 'ng-view'. -->
+      <!-- In angular.js, to make a single page application, we need to load the data without loading the whole url again or by going to some other link -->
+      <!-- So, here we make a 'ng-view' which can also be understood as group of views -->
+      <!-- Then, the '$routeProvier' inbuilt directive of angular.js is used to declare/decide the route  -->
+      <!-- Here, Header and footer remains same and, -->
+      <!-- The 'ng-view' adds up the view html file ( which is called by $routeProvider accordingly ) inside itself.-->
+  </div>
+
+
+  <!-- Footer START -->
+  <footer>
+    <!-- Bootstrap Grid -->
+
+    <!-- Row START -->
+    <!-- It has a total of 12 columns inside a row -->
+    <div class="row footer-first">
+
+      <!-- Here, 'lg','sm','xs' means 'desktops/laptops', 'tablets', 'mobiles' respectively -->
+
+      <!-- This div occupies 4 columns from 12 rows -->
+      <div class="col col-sm-4 col-lg-4 col-xs-4 colOne">
+        <!-- Logo on Left of Footer -->
+        <img src="images/logo.png" alt="logo" style="width:100%; height:100%;">
+      </div>
+
+      <!-- This div occupies 4 columns from 12 rows -->
+      <div class="col col-sm-4 col-lg-4 col-xs-4 colTwo text-center">
+        <!-- Useful Links -->
+        <br><br><br>
+        <h4> Links </h4>
+
+           <a href="#/"> Recent Updates </a> <br>
+           <a href="#/stats"> Statistics </a> <br>
+           <a href="https://www.pseudo2638.github.io"> Reach Me </a> <br>
+
+      </div>
+
+      <!-- This div occupies 4 columns from 12 rows -->
+      <div class="col col-sm-4 col-lg-4 col-xs-4 colThree">
+        <!-- Social Links and Contact button to display contact information -->
+        <br><br><br>
+        <div class="social-networks">
+           <a href="https://www.instagram.com/aditya_sudhakar" class="instagram"><i class="fa fa-instagram"></i></a>
+           <a href="https://www.facebook.com/ethical_hacker2638" class="facebook"><i class="fa fa-facebook"></i></a>
+           <a href="https://www.github.com/pseudo2638" class="github"><i class="fa fa-github"></i></a>
+        </div>
+
+        <button type="button" class="btn btn-default"  onclick="getContact()" >Contact</button>
+
+      </div>
+
+    </div>
+    <!-- Row END -->
+
+    <div class="footer-copyright" >
+       <span>powered by &copy; pseudo2638.github.io &nbsp</span>
+    </div>
+
+
+  </footer>
+  <!-- Footer END -->
+
+
+
+
+
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+      <!-- Bootstrap Core JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+
+      <!-- Angular.js CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+
+      <!-- Linking of all local javascript files -->
+      <script src="angular/app.js"> </script>
+      <script src="angular/routes.js"> </script>
+      <script src="controllers/index-view-controller.js"> </script>
+      <script src="controllers/filter-view-controller.js"> </script>
+      <script src="controllers/singleViewController.js"> </script>
+      <script src="controllers/postViewController.js"> </script>
+      <script src="controllers/statsViewController.js"> </script>
+      <script src="services/service.js"> </script>
+      <script src="directives/jQuery.js"> </script>
+
+      <!-- To Display Contact Information on clicking 'contact' button -->
+      <script type="text/javascript">
+        function getContact()
+        {
+          alert('Phone Number :' + ' +91 7011407567' + '\n' + 'Email Id :' +' adityasudhakar2638@gmail.com'+ '\n' + '\n' +'Thank You.');
+
+        }
+        function getEmail()
+        {
+
+        }
+      </script>
+
+
+
+  </body>
+</html>

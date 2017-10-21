@@ -1,0 +1,301 @@
+
+/* Navbar brand image styling */
+nav img
+{
+  margin-top: -10px !important;
+  height: 50px !important;
+  width: auto !important;
+}
+
+.holder
+{
+  padding: 0 !important;
+
+}
+.margins
+{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Navbar */
+nav
+{
+  margin: 0 !important;
+  font-family: verdana !important;
+  border-radius: 0 !important;
+}
+
+/* Table data on hover */
+table td:hover
+{
+  height: 50px !important;
+}
+
+.dropdown button
+{
+  background-color: #ffffff !important;
+  padding: 8px !important ;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.dropdown button:hover
+{
+   border-bottom: 2px solid red ;
+}
+
+.dropdown
+{
+   float: left;
+}
+
+.filters
+{
+   padding: 0 !important;
+}
+.mainFilters
+{
+  background-color: white !important;
+  box-shadow: 5px 5px 10px #888888;
+}
+
+.selectTeam:hover
+{
+  border-bottom: 2px solid red !important;
+}
+
+.selectTeam
+{
+  vertical-align:middle !important;
+  border: none;
+  margin-left: 3%;
+  border-right: 1px solid #666;
+  border-left: 1px solid #666;
+}
+
+.refresh i:hover::before
+{
+     content: "Refresh";
+}
+
+/* Footer */
+footer
+{
+  padding: 0 !important;
+  min-height: 10% !important;
+
+}
+
+/* ng-view */
+.midView
+{
+  min-height: 1400px !important;
+}
+
+.footer-copyright
+{
+  position:  fixed !important;
+  bottom:0;
+
+}
+
+body
+{
+  background-color: #D0D3D4;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 90%;
+}
+
+/* Sub Footer */
+.footer-first
+{
+  padding: 5%;
+  background-color: #839AA5;
+  margin: 0 !important;
+}
+
+/* Sub Footer*/
+.footer-copyright
+{
+  margin-top: 0 !important;
+  margin: 0 !important;
+  background-color: #71828A;
+  text-align: center;
+  color: white;
+  font-family: verdana;
+}
+
+.colTwo a
+{
+  color: white;
+  font-family: verdana;
+}
+
+.colTwo a:hover
+{
+  text-decoration: none;
+  color: black;
+}
+
+.social-networks
+{
+   padding: 10px ;
+}
+
+.colThree div a
+{
+  padding: 10px !important;
+}
+
+.colThree button
+{
+  border-radius: 16px ;
+}
+
+.colThree
+{
+  text-align: center;
+}
+
+.card
+{
+  background-color: white;
+  margin-left: 10%;
+  margin-right: 10% ;
+}
+
+.card-filter
+{
+  background-color: white !important;
+  border-radius: 16px;
+}
+
+.card-header-filter
+{
+   background-color:#D0D3D4;
+   border-top: 1px solid #34495E !important;
+   border-left: 1px solid #34495E !important;
+   border-right: 1px solid #34495E !important;
+}
+
+.card-block
+{
+  padding: 5%;
+}
+
+.card-footer
+{
+  background-color: #ECF0F1;
+}
+
+.date
+{
+  text-align: center;
+}
+
+.buttons
+{
+  text-align: center;
+}
+
+.buttons button
+{
+  margin: 2%;
+}
+
+.dataFlow
+{
+   background-color: white !important;
+   padding: 1%;
+   border-radius: 10px;
+}
+.singleView
+{
+  box-shadow: 10px 10px 10px 0 #666;
+  border: 2px solid gray;
+}
+
+.singleDate
+{
+  background-color: white;
+}
+
+}
+.singleMatchday
+{
+  background-color: gray;
+}
+
+
+body select
+{
+  display: block;
+  padding: 10px 70px 10px 13px !important;
+  max-width: 100%;
+  height: auto !important;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  background: url("https://image.ibb.co/iMeAJv/selectbox_arrow.png") right center no-repeat;
+  background-color: #fff;
+  color: #444444;
+  font-size: 12px;
+  line-height: 16px !important;
+  appearance: none;
+  /* this is must */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  }
+  /* body select.select_box option */
+
+  body select option
+  {
+    padding: 20px !important;
+  }
+  /* for IE and Edge */
+
+  select::-ms-expand
+  {
+      display: none;
+  }
+
+  select:disabled::-ms-expand
+  {
+      background: #f60;
+  }
+
+  .dateShow
+    {
+     color: #BB8415;
+     padding: 1%;
+    }
+
+  .team
+    {
+    color: #20718C ;
+    padding: 1%;
+    }
+
+  .score
+    {
+      color: #80AAB8;
+      padding: 1%;
+    }
+
+/*For a filter view search input  */
+    input[type=text]
+    {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    input[type=text]:focus {
+        width: 100%;
+    }

@@ -1,0 +1,179 @@
+<!-- Filters View Page START -->
+<!-- Injecting jquery directive to html  -->
+<div jquery>
+
+      <!-- Title -->
+      <div class="container-fluid titleMain text-center" style="font-family:verdana; padding:2%; color:black;">
+           <b>Team Wise Statistics</b>
+      </div>
+
+      <!-- The controller function will load on this block -->
+      <!-- 'ng-init' stands for initialization of angular controller functions-->
+      <div controller="statsViewController" ng-init="myStatsView.loadStatsView()" style="font-family:verdana !important;">
+
+           <!-- Years button group -->
+           <div class="row margins buttonsGroup" style="width:100%;">
+                 <!-- Bootstrap Grid Used -->
+                 <div class="col col-xs-12 col-sm-12 col-md-6 margins" >
+                      <button type="button" class="btn select16" style="width:100%; border-radius:0; padding:2%;" name="button">
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+                                   &nbsp <b> YEAR 2016-17 </b>
+                      </button>
+                 </div>
+                 <div class="col col-xs-12 col-sm-12 col-md-6 margins">
+                      <button type="button" class="btn select15" style="width:100%; border-radius:0;padding:2%;" name="button">
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+                                  &nbsp <b> YEAR 2015-16 </b>
+                      </button>
+                 </div>
+           </div>
+
+           <!-- 2015-16 stats block START -->
+           <div class="block15" style="margin:5%;">
+
+                 <h2>
+                   <!-- Title of the sub block -->
+                   <p class="text-center" style="color:#7B7D7D;">
+                       <b>This Season's Team Wise Statistics</b>
+                   </p>
+                 </h2>
+                 <!-- Horizontal line -->
+                 <hr class="small">
+
+                 <!-- Bootstrap table for ranking accoridng to total wins and loss -->
+                 <table class="table table-hover table-bordered ">
+                       <thead class="thead-inverse ">
+                          <tr> <!-- Table row -->
+                            <!-- Table header -->
+                            <th>#</th>
+                            <th>Team Name</th>
+                            <th>Total Matches</th>
+                            <th>Total Winnings</th>
+                            <th>Total Loss</th>
+                          </tr>
+                       </thead>
+                       <tbody>
+                          <!-- Note, here all the data is being passed by controller by refrencing each other and -->
+                          <!-- 'ng-repeat' requires the data from controller in an array of key value pairs -->
+                          <tr ng-repeat="statsTable in myStatsView.statsTables">
+                            <!-- Table data -->
+                            <td>{{ statsTable.id}}</td>
+                            <td>{{ statsTable.name }}</td>
+                            <td>{{ statsTable.totalMatches }}</td>
+                            <td>{{ statsTable.wins }}</td>
+                            <td>{{ statsTable.loss }}</td>
+                          </tr>
+                       </tbody>
+                 </table>
+
+                 <hr style="border: 2px solid #7B7D7D; margin-top:5%;">
+
+                 <h2>
+                   <!-- Title of sub block -->
+                   <p class="text-center"style="color:#7B7D7D; margin-top:3% !important;">
+                         <b>This Season's Total Scores Wise Rankings</b>
+                   </p>
+                 </h2>
+                 <hr class="small">
+
+                 <!-- Bootsrap table for ranking according to total goals by each team in the whole season -->
+                 <table class="table table-hover table-bordered">
+                         <thead class="thead-inverse">
+                            <tr> <!-- table row -->
+                              <!-- table header -->
+                              <th>Rank</th>
+                              <th>Name</th>
+                              <th>Total Scores</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                            <!-- Note, here all the data is being passed by controller by refrencing each other and -->
+                            <!-- 'ng-repeat' requires the data from controller in an array of key value pairs -->
+                            <tr ng-repeat="ranking in myStatsView.rankings">
+                              <!-- table data -->
+                              <td>{{ ranking.id }}</td>
+                              <td>{{ ranking.name }}</td>
+                              <td>{{ ranking.goals }}</td>
+                            </tr>
+                         </tbody>
+                  </table>
+
+            </div>
+            <!-- 2015-16 stats block END -->
+
+
+            <!-- 2016-17 stats block START -->
+            <div class="block16" style="margin:5%;">
+
+                  <h2>
+                    <!-- Title of the sub block -->
+                    <p class="text-center" style="color:#7B7D7D;">
+                        <b>This Season's Team Wise Statistics</b>
+                    </p>
+                  </h2>
+                  <!-- Horizontal line -->
+                  <hr class="small">
+
+                  <!-- Bootstrap table for ranking accoridng to total wins and loss -->
+                  <table class="table table-hover table-bordered ">
+                        <thead class="thead-inverse ">
+                           <tr> <!-- Table row -->
+                             <!-- Table header -->
+                             <th>#</th>
+                             <th>Team Name</th>
+                             <th>Total Matches</th>
+                             <th>Total Winnings</th>
+                             <th>Total Loss</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <!-- Note, here all the data is being passed by controller by refrencing each other and -->
+                           <!-- 'ng-repeat' requires the data from controller in an array of key value pairs -->
+                           <tr ng-repeat="statsTable2 in myStatsView.statsTables2">
+                             <!-- Table data -->
+                             <td>{{ statsTable2.id}}</td>
+                             <td>{{ statsTable2.name }}</td>
+                             <td>{{ statsTable2.totalMatches }}</td>
+                             <td>{{ statsTable2.wins }}</td>
+                             <td>{{ statsTable2.loss }}</td>
+                           </tr>
+                        </tbody>
+                  </table>
+
+                  <hr style="border: 2px solid #7B7D7D; margin-top:5%;">
+
+                  <h2>
+                    <!-- Title of sub block -->
+                    <p class="text-center"style="color:#7B7D7D; margin-top:3% !important;">
+                          <b>This Season's Total Scores Wise Rankings</b>
+                    </p>
+                  </h2>
+                  <hr class="small">
+
+                  <!-- Bootsrap table for ranking according to total goals by each team in the whole season -->
+                  <table class="table table-hover table-bordered">
+                          <thead class="thead-inverse">
+                             <tr> <!-- table row -->
+                               <!-- table header -->
+                               <th>Rank</th>
+                               <th>Name</th>
+                               <th>Total Scores</th>
+                             </tr>
+                          </thead>
+                          <tbody>
+                             <!-- Note, here all the data is being passed by controller by refrencing each other and -->
+                             <!-- 'ng-repeat' requires the data from controller in an array of key value pairs -->
+                             <tr ng-repeat="ranking2 in myStatsView.rankings2">
+                               <!-- table data -->
+                               <td>{{ ranking2.id }}</td>
+                               <td>{{ ranking2.name }}</td>
+                               <td>{{ ranking2.goals }}</td>
+                             </tr>
+                          </tbody>
+                   </table>
+
+             </div>
+             <!-- 2016-17 stats block END -->
+
+         </div>
+</div>

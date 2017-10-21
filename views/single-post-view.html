@@ -1,0 +1,43 @@
+<!-- The controller function will load on this block -->
+<!-- 'ng-init' stands for initialization of angular controller functions-->
+<!-- This view was not a neccesary module to be inculded in the project -->
+<!-- This has been done for understanding and UI purposes -->
+<!-- Feel fine to skip this block if you want -->
+<!-- Here, custom json from a local file is used to get the data as a json and then perform the same procedure -->
+<div class="container" ng-init="myPostView.getPostData()" style="margin-top:10%; margin-bottom:5%; font-family:verdana !important;">
+
+     <!-- Block to show single post details START -->
+     <div class="card text-center">
+          <!-- Please note, here the data we get is being stores/collected from the url where they are passed as a parameter from the parent view -->
+          <!-- Date passed from controller through $scope -->
+          <div class="card-header" style="background-color:#666; color:white;">
+               {{myPostView.postCreatedDateView}}
+          </div>
+
+          <!-- Image passed from controller through $scope -->
+          <img class="card-img-top" style="background-color:white; width:100%;"src="images/{{myPostView.imageSrcView}}" alt="Card image cap">
+
+          <!--Post title and body passed from controller through $scope -->
+          <div class="card-block">
+                <h4 class="card-title" >{{myPostView.postTitleView}}</h4>
+                <p class="card-text">{{myPostView.postBodyView}}</p>
+          </div>
+
+          <!-- Author name passed from controller through $scope -->
+          <div class="card-footer text-muted">
+                <span>This post is created by : {{myPostView.postAuthorView}}</span>
+          </div>
+      </div>
+      <!-- Block to show single post details END -->
+
+      <!-- Back Button -->
+      <p class="text-center">
+          <a ng-href="#/">
+                <button type="button" class="btn btn-success" name="button" >
+                      <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                          Back
+                </button>
+          </a>
+      </p>
+
+</div>

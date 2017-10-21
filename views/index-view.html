@@ -1,0 +1,101 @@
+<!-- The controller function will load on this block -->
+<!-- 'ng-init' stands for initialization of angular controller functions-->
+<div class="container-fluid" ng-init="myIndexView.retriveAllData2016()" style="margin:0 ; margin-bottom: 5%; padding:0;">
+
+       <!-- Football Scores block START -->
+       <div class="row" style=" width:70%;float:left;">
+          <!-- 'ng-repeat' for match data START-->
+          <!-- Note, here all the data is being passed by controller by refrencing each other and -->
+          <!-- 'ng-repeat' requires the data from controller in an array of key value pairs -->
+          <div style="padding:2%; font-family:verdana !important;" class="indexView col cs-12 col-md-12 col-sm-12" ng-repeat="indexStyle in indexStyles | limitTo: 23">
+
+             <div class="col col-xs-0 col-sm-1 col-md-1">
+               <!-- Blank column for spacing -->
+             </div>
+
+             <div class="col col-xs-12 col-sm-11 col-md-11 dataFlow" >
+                 <div class="col col-xs-12 col-sm-12 col-md-12">
+
+                    <div class="col col-sm-9 col-md-9 " class="detailsView">
+                        <div class="col col-xs-12 col-sm-12 col-md-12" style="margin:0 !important; padding:0 !important;">
+
+                             <!-- Current Date from 'ng-repeat' -->
+                             <div class="col col-xs-12 col-sm-12 col-md-12 date dateShow">
+                                 <b>{{indexStyle.date | date:"yyyy-MM-dd"}}</b>
+                             </div>
+
+                             <!-- Current Teams from 'ng-repeat' -->
+                             <div class="col col-xs-12 col-sm-12 col-md-12 date ">
+                                 <div class="col col-xs-5 col-sm-5 col-md-5 date team">
+                                     <b>  {{indexStyle.team1}} &nbsp </b>
+                                 </div>
+                                 <div class="col col-xs-2 col-sm-2 col-md-2 date team">
+                                     <i>V/S</i>
+                                 </div>
+                                 <div class="col col-xs-5 col-sm-5 col-md-5 date team">
+                                     <b> {{indexStyle.team2}} &nbsp </b>
+                                 </div><br>
+                             </div>
+
+                             <!-- Current Score from 'ng-repeat' -->
+                             <div class="col col-xs-12 col-sm-12 col-md-12 date ">
+                                 <div class="col col-xs-5 col-sm-5 col-md-5 date score">
+                                      <b> {{indexStyle.score1}} &nbsp </b>
+                                 </div>
+                                 <div class="col col-xs-2 col-sm-2 col-md-2 date score">
+                                      <i>-</i>
+                                 </div>
+                                 <div class="col col-xs-5 col-sm-5 col-md-5 date score">
+                                      <b>{{indexStyle.score2}} &nbsp  </b>
+                                 </div>
+                             </div>
+
+                           </div>
+                       </div>
+
+                       <!-- Link to see the Current match details in depth in a new view -->
+                       <!-- Please note, here this is the parent view from where parameters are passed and, -->
+                       <!-- 'single-data-view.html' is the view where the parameters are displayed through controller's help-->
+                       <div class="col col-sm-3 col-md-3 buttons" style="margin:0 !important; padding:0 !important;">
+                            <a ng-href="#/single/{{indexStyle.date.toDateString()}}/{{indexStyle.team1}}/{{indexStyle.team2}}/{{indexStyle.code1}}/{{indexStyle.code2}}/{{indexStyle.key1}}/{{indexStyle.key2}}/{{indexStyle.matchday}}/{{indexStyle.score1}}/{{indexStyle.score2}} "> <button class="btn btn-default" title="View"><i class="fa fa-eye"></i><span class="hidden-xs"> Summary </span></button> </a>
+                       </div>
+
+                   </div>
+                </div>
+
+             </div>
+             <!-- 'ng-repeat' for match data END-->
+
+          </div>
+          <!-- Football Scores block END -->
+
+
+
+          <!-- Custom posts block START -->
+          <!-- This block was not a neccesary module to be inculded in the project -->
+          <!-- This has been done for understanding and UI purposes -->
+          <!-- Feel fine to skip this block if you want -->
+          <!-- Here, custom json from a local file is used to get the data as a json and then perform the same procedure -->
+          <div style="width:30%; float:right; margin-top:2%;">
+              <!-- 'ng-repeat' for post data START -->
+              <div class="card card-inverse" ng-repeat="postData in postDetails" style=" margin-top:10%; background-color: #333; border-color: #333; color:white; box-shadow: 10px 10px 10px #666;">
+
+                  <!-- Current post image from the array recieved in 'ng-repeat' -->
+                  <img class="card-img-top" style="background-color:white; width:100%;"src="images/{{postData.imageSrc}}" alt="Card image cap">
+                     <div class="card-block text-center">
+                         <!-- Current post title from ng-repeat-->
+                         <h4 class="card-title" style="background-color: #464A4B; padding:2%; border-radius:10px;">{{ postData.postTitle }}</h4>
+                         <!-- Current post body from ng-repeat -->
+                         <p class="card-text" style="padding:2%;">{{ postData.postBody | limitTo: 150  }}&nbsp <b>....</b></p>
+                         <!-- Link to see the Current post details in depth in a new view -->
+                         <!-- Please note, here this is the parent view from where parameters are passed and, -->
+                         <!-- 'single-post-view.html' is the view where the parameters are displayed through controller's help-->
+                         <a ng-href="#/post/{{ postData.postTitle }}/{{ postData.postBody }}/{{ postData.postAuthor }}/{{ postData.postCreatedDate }}/{{postData.imageSrc}}"><button class="btn btn-default" title="View"><i class="fa fa-bookmark" aria-hidden="true"></i><span class="hidden-xs"> Know More </span></button></a>
+                     </div>
+
+              </div>
+              <!-- 'ng-repeat' for post data END -->
+          </div>
+          <!-- Custom posts block END -->
+
+</div>

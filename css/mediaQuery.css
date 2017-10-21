@@ -1,0 +1,24 @@
+/* This is done according to the screen with in px */
+/* The specified classes resize themselves when the screen size is increased/decreased */
+@media screen and (min-width: 361px)
+{
+  .indexView
+  {
+    font-size: 15px;
+  }
+  header
+  {
+    margin-bottom: 5%;
+  }
+}
+@media screen and (min-width: 362px) and (max-width:1080px)
+{
+  .indexView
+  {
+    font-size: 15px;
+  }
+  header
+  {
+    margin-bottom: 6.5%;
+  }
+}

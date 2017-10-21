@@ -1,0 +1,218 @@
+<!-- Filters View Page START -->
+<!-- Injecting jquery directive to html  -->
+<div jquery>
+
+   <!-- Title and Search Block -->
+   <div class="container-fluid titleMain text-center" style="font-family:verdana; padding:2%; color:black;">
+       <!-- Title -->
+       <b>Get Match Details By Applying Fiters Below</b> <br> <br>
+       <!-- Search Box/Input -->
+       <input type="text" class="search-query" placeholder="Search..." style="color:gray;"ng-model="searchData">
+   </div>
+
+   <!-- Year Buttons START -->
+   <div class="container-fluid buttonsGroup" style="display:inline; width: 100%; padding:0;">
+       <button type="button" class="select15 btn"  type="button"  name="button" style="width:50%;float:left; border-radius:0; padding:1%;"><i class="fa fa-calendar" aria-hidden="true"></i></i> &nbsp <b> YEAR 2015-16 </b></button>
+       <button type="button" class="select16 btn" type="button" name="button" style="width:50%;border-radius:0;  padding:1%;"><i class="fa fa-calendar" aria-hidden="true"></i></i> &nbsp <b> YEAR 2016-17 </b> </button>
+   </div>
+   <!-- Year Buttons END -->
+
+   <!-- 2015-16 Year Data Block START -->
+   <!-- The controller function will load on this block -->
+   <!-- 'ng-init' stands for initialization of angular controller functions-->
+   <div class="container-fluid filters block15" style="font-family:verdana; margin:0 !important; padding:0 !important;" controller="filterViewController" ng-init="myFilterView.retriveAllData2015()">
+        <!-- Filter dropwowns BLOCK START -->
+        <!-- These dropdowns are used to filter the ng-repeat data through data-ng-hide attribute of angular.js -->
+        <div class="container-fluid mainFilters">
+             <!-- Title -->
+             <div class="text-center" style="width:10%; float:left; margin-top:0.5%;"> Filter By - </div>
+
+             <div style="width:90%; float:right; display:inline-block !important; margin:0 !important;">
+
+                <div controller="filterViewController" class="holder" style=" float:left; display:inline-block; width:100% !important;" >
+                     <!-- Teams Dropdown -->
+                     <select class="selectTeam" ng-options="team for team in teams" ng-model="selectedTeams" ng-change="hasChanged()"  style=" float:left ;">
+                         <option value="" disabled > Select Team</option>
+                     </select>
+
+                     <!-- Refresh page button -->
+                     <a ng-click="reloadRoute()" class="refresh" style="margin-top:5% !important;  padding:0 !important;"><i class="fa fa-refresh" style="float:right;margin-top:10px !important; !important; padding:0 !important;" aria-hidden="true"></i></a>
+
+                     <!-- Matchday dropdown-->
+                     <select class="selectTeam" ng-options="matchday for matchday in matchdays" ng-model="selectedMatchday" ng-change="hasChanged()"  style=" float:left ;">
+                         <option value="" disabled > Select Matchday</option>
+                     </select>
+
+                     <!-- Date input -->
+                     <div style="height:100% !important; margin:0 !important; padding:0 !important;" >
+                         <i style="margin-left:3%; margin-right:1%;"class="fa fa-calendar-check-o" aria-hidden="true" style="height:100% !important;" > &nbsp
+                                <input type="date" id="exampleInput" name="input" ng-model="example" style="margin-top:2%;"
+                               placeholder="yyyy-MM-dd" style="margin-top:0.5%;" ng-change="myDate.data = example.toDateString()" />
+                         </i>
+                     </div>
+
+                </div>
+
+              </div>
+
+         </div>
+         <!-- Filter dropdowns block END -->
+
+         <!-- 2015-16 'ng-repeat' block to display the array of data recieved from the controller START -->
+         <div class="row container-fluid" style="margin-top: 5% !important; margin:1%; padding:0 !important;">
+
+              <!-- Here, data-ng-hide associates function to the filter by passing the 'ng-model' (which is the filter name here for each) as the parameter to the function -->
+              <div class="col col-xs-6 col-sm-4 col-md-4" style="height:300px;"ng-repeat = "filterView in filterViews  | filter: selectedTeams |filter: selectedMatchday | filter: myDate.data | filter: searchData " data-ng-hide="selectBlockToDisplay(filterView.team1,filterView.team2) || selectBlockToDisplayMatchday(filterView.matchday) || selectBlockToDisplayDate(filterView.date)  ">
+                  <!-- Note, here all the data is being passed by controller by refrencing each other and -->
+                  <!-- 'ng-repeat' requires the data from controller in an array of key value pairs -->
+                  <div class="card-filter text-center">
+
+                      <div class="card-header-filter">
+
+                          <ul class="nav nav-tabs card-header-tabs">
+                              <li class="nav-item active">
+                                <!-- Current Matchday -->
+                                <a class="nav-link" href="#">{{::filterView.matchday}}</a>
+                              </li>
+                          </ul>
+
+                      </div>
+
+                      <div class="card-block" style="padding:0 !important;">
+
+                          <!-- Current Teams -->
+                          <div style="display:inline-block; width:100%;">
+                               <h6 class="card-title col col-xs-5 col-md-5 col-sm-5" style="float:left;">{{::filterView.team1}}</h6>
+                               <h7 class="card-title col col-xs-2 col-md-2 col-sm-2" style="float:left;">V/S</h7>
+                               <h6 class="card-title col col-xs-5 col-md-5 col-sm-5" style="float:right;">{{::filterView.team2}}</h6>
+                          </div> <br>
+
+                          <!-- Current Scores -->
+                          <div style="display:inline-block; width:100%;">
+                               <h6 class="card-title col col-xs-5 col-md-5 col-sm-5" style="float:left;">{{::filterView.score1}}</h6>
+                               <h7 class="card-title col col-xs-2 col-md-2 col-sm-2" style="float:left;">-</h7>
+                               <h6 class="card-title col col-xs-5 col-md-5 col-sm-5" style="float:right;">{{::filterView.score2}}</h6>
+                          </div> <br>
+
+                          <!-- Link to pass data to the '$routeProvider' as parameters in url and display the current match detail in a single view -->
+                          <div style="margin: 2%;">
+                               <a ng-href="#/single/{{filterView.date.toDateString()}}/{{filterView.team1}}/{{filterView.team2}}/{{filterView.code1}}/{{filterView.code2}}/{{filterView.key1}}/{{filterView.key2}}/{{filterView.matchday}}/{{filterView.score1}}/{{filterView.score2}} " class="btn " style="border: 1px solid black;"><i class="fa fa-area-chart" aria-hidden="true"></i>&nbspSummary</a>
+                          </div>
+
+                      </div>
+
+                      <!-- Current Dates -->
+                      <div class="card-footer text-muted text-center">
+                               {{::filterView.date| date: "yyyy-MM-dd"}}
+                      </div>
+
+                   </div>
+               </div>
+
+           </div>
+           <!-- 2015-16 'ng-repeat' block end-->
+
+
+    </div>
+    <!-- 2015-16 year block END -->
+
+
+    <!-- 2016-17 Year Data Block START -->
+    <!-- The controller function will load on this block -->
+    <!-- 'ng-init' stands for initialization of angular controller functions-->
+    <div class="container-fluid filters block16" style="font-family:verdana; margin:0 !important; padding:0 !important;" controller="filterViewController" ng-init="myFilterView.retriveAllData2016()">
+         <!-- Filter dropwowns BLOCK START -->
+         <!-- These dropdowns are used to filter the ng-repeat data through data-ng-hide attribute of angular.js -->
+         <div class="container-fluid mainFilters">
+              <!-- Title -->
+              <div class="text-center" style="width:10%; float:left; margin-top:0.5%;"> Filter By - </div>
+
+              <div style="width:90%; float:right; display:inline-block !important; margin:0 !important;">
+
+                 <div controller="filterViewController" class="holder" style=" float:left; display:inline-block; width:100% !important;" >
+                      <!-- Teams Dropdown -->
+                      <select class="selectTeam" ng-options="team2 for team2 in teams2" ng-model="selectedTeams2" ng-change="hasChanged()"  style=" float:left ;">
+                          <option value="" disabled > Select Team</option>
+                      </select>
+
+                      <!-- Refresh page button -->
+                      <a ng-click="reloadRoute()" class="refresh" style="margin-top:5% !important;  padding:0 !important;"><i class="fa fa-refresh" style="float:right;margin-top:10px !important; !important; padding:0 !important;" aria-hidden="true"></i></a>
+
+                      <!-- Matchday dropdown-->
+                      <select class="selectTeam" ng-options="matchday2 for matchday2 in matchdays2" ng-model="selectedMatchday2" ng-change="hasChanged()"  style=" float:left ;">
+                          <option value="" disabled > Select Matchday</option>
+                      </select>
+
+                      <!-- Date input -->
+                      <div style="height:100% !important; margin:0 !important; padding:0 !important;" >
+                          <i style="margin-left:3%; margin-right:1%;"class="fa fa-calendar-check-o" aria-hidden="true" style="height:100% !important;" > &nbsp
+                                 <input type="date" id="exampleInput2" name="input" ng-model="example2" style="margin-top:2%;"
+                                placeholder="yyyy-MM-dd" style="margin-top:0.5%;" ng-change="myDate2.data2 = example2.toDateString()" />
+                          </i>
+                      </div>
+
+                 </div>
+
+               </div>
+
+          </div>
+          <!-- Filter dropdowns block END -->
+
+          <!-- 2015-16 'ng-repeat' block to display the array of data recieved from the controller START -->
+          <div class="row container-fluid" style="margin-top: 5% !important; margin:1%; padding:0 !important;">
+
+               <!-- Here, data-ng-hide associates function to the filter by passing the 'ng-model' (which is the filter name here for each) as the parameter to the function -->
+               <div class="col col-xs-6 col-sm-4 col-md-4" style="height:300px;"ng-repeat = "filterView2 in filterViews2  | filter: selectedTeams2 |filter: selectedMatchday2 | filter: myDate2.data2 | filter: searchData " data-ng-hide="selectBlockToDisplay(filterView2.team1,filterView2.team2) || selectBlockToDisplayMatchday(filterView2.matchday) || selectBlockToDisplayDate(filterView2.date)  ">
+                   <!-- Note, here all the data is being passed by controller by refrencing each other and -->
+                   <!-- 'ng-repeat' requires the data from controller in an array of key value pairs -->
+                   <div class="card-filter text-center">
+
+                       <div class="card-header-filter">
+
+                           <ul class="nav nav-tabs card-header-tabs">
+                               <li class="nav-item active">
+                                 <!-- Current Matchday -->
+                                 <a class="nav-link" href="#">{{::filterView2.matchday}}</a>
+                               </li>
+                           </ul>
+
+                       </div>
+
+                       <div class="card-block" style="padding:0 !important;">
+
+                           <!-- Current Teams -->
+                           <div style="display:inline-block; width:100%;">
+                                <h6 class="card-title col col-xs-5 col-md-5 col-sm-5" style="float:left;">{{::filterView2.team1}}</h6>
+                                <h7 class="card-title col col-xs-2 col-md-2 col-sm-2" style="float:left;">V/S</h7>
+                                <h6 class="card-title col col-xs-5 col-md-5 col-sm-5" style="float:right;">{{::filterView2.team2}}</h6>
+                           </div> <br>
+
+                           <!-- Current Scores -->
+                           <div style="display:inline-block; width:100%;">
+                                <h6 class="card-title col col-xs-5 col-md-5 col-sm-5" style="float:left;">{{::filterView2.score1}}</h6>
+                                <h7 class="card-title col col-xs-2 col-md-2 col-sm-2" style="float:left;">-</h7>
+                                <h6 class="card-title col col-xs-5 col-md-5 col-sm-5" style="float:right;">{{::filterView2.score2}}</h6>
+                           </div> <br>
+
+                           <!-- Link to pass data to the '$routeProvider' as parameters in url and display the current match detail in a single view -->
+                           <div style="margin: 2%;">
+                                <a ng-href="#/single/{{filterView2.date.toDateString()}}/{{filterView2.team1}}/{{filterView2.team2}}/{{filterView2.code1}}/{{filterView2.code2}}/{{filterView2.key1}}/{{filterView2.key2}}/{{filterView2.matchday}}/{{filterView2.score1}}/{{filterView2.score2}} " class="btn " style="border: 1px solid black;"><i class="fa fa-area-chart" aria-hidden="true"></i>&nbspSummary</a>
+                           </div>
+
+                       </div>
+
+                       <!-- Current Dates -->
+                       <div class="card-footer text-muted text-center">
+                                {{::filterView2.date| date: "yyyy-MM-dd"}}
+                       </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- 2016-17 'ng-repeat' block end-->
+
+     </div>
+     <!-- 2016-17 year block END -->
+
+</div>

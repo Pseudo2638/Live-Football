@@ -1,0 +1,83 @@
+<!-- The controller function will load on this block -->
+<!-- 'ng-init' stands for initialization of angular controller functions-->
+<!-- It remains same for all the match blocks shown through 'ng-repeat' -->
+<!-- The parent view passes the data as parameter in the url and hence fom there using '$routeParams' and '$routeProvider' controller fetches the data and stores it in a variable -->
+<div class="container" ng-init="mySingleView.showSingleView()" style="margin-top:10%; margin-bottom:5%; font-family:verdana !important;">
+
+     <!-- Block to show single match details START -->
+     <div class="row container-fluid" >
+
+          <div class="col col-xs-12 col-sm-12 col-md-12 text-center singleView" style="margin:0 !important; padding:0 !important;">
+              <!-- Date passed from the controller -->
+              <div class="col col-xs-12 col-sm-12 col-md-12 singleDate" style="padding:1%;">
+                  {{mySingleView.dateCurrent}}
+              </div>
+
+              <!-- Teams passed from the controller -->
+              <div class="col col-xs-12 col-sm-12 col-md-12 singleTeam" style="padding:2%;">
+                  <div class="col col-xs-5 col-sm-5 col-md-5">
+                     <span style="border-bottom: 2px solid white; padding:5px;">{{mySingleView.team1Current}} </span>
+                  </div>
+                  <div class="col col-xs-2 col-sm-2 col-md-2">
+                      V/S
+                  </div>
+                  <div class="col col-xs-5 col-sm-5 col-md-5">
+                      <span style="border-bottom: 2px solid white; padding:5px;">{{mySingleView.team2Current}}</span>
+                  </div>
+              </div>
+
+              <!-- Team codes passed from the controller -->
+              <div class="col col-xs-12 col-sm-12 col-md-12 singleKey" style="padding:2%;">
+                  <div class="col col-xs-5 col-sm-5 col-md-5">
+                      <span style="border-bottom: 2px dotted white; padding:5px;">{{mySingleView.code1Current}}</span>
+                  </div>
+                  <div class="col col-xs-2 col-sm-2 col-md-2">
+
+                  </div>
+                  <div class="col col-xs-5 col-sm-5 col-md-5">
+                      <span style="border-bottom: 2px dotted white; padding:5px;">{{mySingleView.code2Current}}</span>
+                  </div>
+              </div>
+
+              <!-- Team scores passed from the controller -->
+              <div class="col col-xs-12 col-sm-12 col-md-12 singleKey" style="padding:2%;">
+                  <div class="col col-xs-5 col-sm-5 col-md-5">
+                      <span style="border: 2px dotted white; padding:5px;">{{mySingleView.score1Current}}</span>
+                  </div>
+                  <div class="col col-xs-2 col-sm-2 col-md-2">
+                   ----
+                  </div>
+                  <div class="col col-xs-5 col-sm-5 col-md-5">
+                      <span style="border: 2px dotted white; padding:5px;">{{mySingleView.score2Current}}</span>
+                  </div>
+              </div>
+
+              <!-- Team keys passed from the controller -->
+              <div class="col col-xs-12 col-sm-12 col-md-12 singleCode" style="padding:2%;">
+                  <div class="col col-xs-5 col-sm-5 col-md-5" >
+                      <code>{{mySingleView.key1Current}}</code>
+                  </div>
+                  <div class="col col-xs-2 col-sm-2 col-md-2">
+                      ----
+                  </div>
+                  <div class="col col-xs-5 col-sm-5 col-md-5"  >
+                      <code>{{mySingleView.key2Current}}</code>
+                  </div>
+              </div>
+
+              <!-- Matchday passed from the controller -->
+              <div class="col col-xs-12 col-sm-12 col-md-12 singleMatchday" style="padding:1%; color:white;">
+                  {{mySingleView.matchdayCurrent}}
+              </div>
+
+         </div>
+
+         <!-- Back button -->
+         <div class="col col-xs-12 col-sm-12 col-md-12 text-center" style="padding:2%;">
+              <a href="#/"><button type="button" class="btn btn-danger" name="button">Go Back</button></a>
+         </div>
+
+     </div>
+     <!-- Block to show single match details END -->
+
+</div>
