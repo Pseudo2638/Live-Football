@@ -3,7 +3,7 @@
 // Here, $http,$scope are passed as an inbuilt directive to use corresponding feature //
 // But, FootballScorecardService is a service method which has all the API calls using '$http' //
 
-myApp.controller('indexViewController',['$http','$scope','FootballScorecardService', function($http,$scope,FootballScorecardService){
+myApp.controller('indexViewController',['$http','$scope','FootballScorecardService','$sce', function($http,$scope,FootballScorecardService,$sce){
 
 this.retriveAllData2016 = function(){
 
@@ -45,6 +45,8 @@ this.retriveAllData2016 = function(){
           }
           console.log(iteratedData);
           $scope.indexStyles = iteratedData; // Passing data to 'ng-repeat' as array //
+
+          
 
      },
      // If error in connection //

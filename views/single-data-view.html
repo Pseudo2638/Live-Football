@@ -44,12 +44,23 @@
                   <div class="col col-xs-5 col-sm-5 col-md-5">
                       <span style="border: 2px dotted white; padding:5px;">{{mySingleView.score1Current}}</span>
                   </div>
-                  <div class="col col-xs-2 col-sm-2 col-md-2">
-                   ----
+                  <div class="col col-xs-2 col-sm-2 col-md-2" >
+                    <span ng-if="mySingleView.score1Current == mySingleView.score2Current" ><i class="fa fa-arrows-h" aria-hidden="true"></i> <br> <span style="color:red">draw</span></span>
                   </div>
                   <div class="col col-xs-5 col-sm-5 col-md-5">
                       <span style="border: 2px dotted white; padding:5px;">{{mySingleView.score2Current}}</span>
                   </div>
+              </div>
+
+              <div class="col col-xs-12 col-sm-12 col-md-12">
+                <!-- Below we declare 'ng-if' condition to display the winner -->
+                <!-- Please note, the <span> on which ng-if is applied only displays id the condition stands true -->
+                <div class="col xs-6 col-md-6 col-sm-6" ng-if="mySingleView.score1Current != mySingleView.score2Current">
+                   <span style="padding:5%; color:red;" ng-if="mySingleView.score1Current > mySingleView.score2Current"><i class="fa fa-trophy" aria-hidden="true" ></i> Winner <i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+                </div>
+                <div class="col xs-6 col-md-6 col-sm-6">
+                  <span style="padding:5%; color:red;" ng-if="mySingleView.score1Current < mySingleView.score2Current"><i class="fa fa-trophy" aria-hidden="true" ></i> Winner <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
               </div>
 
               <!-- Team keys passed from the controller -->
@@ -66,7 +77,7 @@
               </div>
 
               <!-- Matchday passed from the controller -->
-              <div class="col col-xs-12 col-sm-12 col-md-12 singleMatchday" style="padding:1%; color:white;">
+              <div class="col col-xs-12 col-sm-12 col-md-12 singleMatchday" style="padding:1%; color:white; background-color:gray;">
                   {{mySingleView.matchdayCurrent}}
               </div>
 

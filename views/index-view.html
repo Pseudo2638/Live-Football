@@ -39,14 +39,20 @@
 
                              <!-- Current Score from 'ng-repeat' -->
                              <div class="col col-xs-12 col-sm-12 col-md-12 date ">
+                                 <!-- Below we declare 'ng-if' condition to display the winner -->
+                                 <!-- Please note, the <span> on which ng-if is applied only displays id the condition stands true -->
                                  <div class="col col-xs-5 col-sm-5 col-md-5 date score">
-                                      <b> {{indexStyle.score1}} &nbsp </b>
+                                      <b> <span style="padding:5%; color:red;" ng-if="indexStyles[$index].score1 > indexStyles[$index].score2"><i class="fa fa-trophy" aria-hidden="true" ></i> </span>{{indexStyle.score1}} &nbsp </b>
                                  </div>
+
                                  <div class="col col-xs-2 col-sm-2 col-md-2 date score">
-                                      <i>-</i>
+                                      <b> <span style="border:1px dotted black; padding:5px; border-radius:8px; color:#BAB362  ;"  ng-if="indexStyles[$index].score1 == indexStyles[$index].score2"> draw </span> </b>
+                                      <b> <span  ng-if="indexStyles[$index].score1 > indexStyles[$index].score2"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </span> </b>
+                                      <b> <span  ng-if="indexStyles[$index].score1 < indexStyles[$index].score2"> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span> </b>
                                  </div>
+
                                  <div class="col col-xs-5 col-sm-5 col-md-5 date score">
-                                      <b>{{indexStyle.score2}} &nbsp  </b>
+                                      <b><span style="padding:5%; color:red;"ng-if="indexStyles[$index].score1 < indexStyles[$index].score2"> <i class="fa fa-trophy" aria-hidden="true" ></i></span>{{indexStyle.score2}} &nbsp </b>
                                  </div>
                              </div>
 
@@ -65,6 +71,10 @@
 
              </div>
              <!-- 'ng-repeat' for match data END-->
+           
+               
+             
+
 
           </div>
           <!-- Football Scores block END -->
@@ -97,5 +107,6 @@
               <!-- 'ng-repeat' for post data END -->
           </div>
           <!-- Custom posts block END -->
+          <p class="text-center" style="padding:4%; padding-right:31%;"><a href="#/filter"><button style="width:100%; padding:2%" type="button" class="btn btn-success" name="button"> SEE MORE </button></a></p>
 
 </div>
